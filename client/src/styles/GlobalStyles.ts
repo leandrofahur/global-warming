@@ -19,12 +19,12 @@ export default createGlobalStyle`
     box-sizing: border-box;     
   }
   
-  html, body, #root {  
-    max-height: 100vh;
-    max-width: 100%;
-    margin: 0 auto;
+  html, body, #root{      
     width: 100vw;
     height: 100vh;        
+    max-height: 100%;
+    max-width: 100%;
+    margin: 0 auto;
   }
   
   @media(max-width:1080px) {
@@ -40,7 +40,7 @@ export default createGlobalStyle`
   }
   
   body { 
-    background: var(--dark-gray);
+    background: var(--white);
     color: var(--white);
   }
 

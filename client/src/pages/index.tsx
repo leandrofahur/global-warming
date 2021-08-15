@@ -1,16 +1,18 @@
-import { motion } from 'framer-motion';
+import { Canvas } from '@react-three/fiber';
+import { Suspense } from 'react';
+
+import { Earth } from '../components/Earth';
+
+import { CanvasContainer } from './styles';
 
 export default function Home() {
   return (
-    <motion.h1
-      initial={{ x: 0, y: 0 }}
-      animate={{ x: 10, y: 10, rotate: 360 }}
-      transition={{
-        ease: 'easeOut',
-        duration: 1,
-      }}
-    >
-      Nextjs
-    </motion.h1>
+    <CanvasContainer>
+      <Canvas>
+        <Suspense fallback={null}>
+          <Earth />
+        </Suspense>
+      </Canvas>
+    </CanvasContainer>
   );
 }
