@@ -5,7 +5,12 @@ import { OrbitControls, Stars } from '@react-three/drei';
 
 import * as THREE from 'three';
 
-export const Earth = (props: any) => {
+interface IEarth {
+  args: [number, number, number];
+  position: THREE.Vector3;
+}
+
+export const Earth = ({ args, position }: IEarth) => {
   const earthRef = useRef<THREE.Mesh>(null!);
   const cloudsRef = useRef<THREE.Mesh>(null!);
 
@@ -27,10 +32,10 @@ export const Earth = (props: any) => {
 
   return (
     <>
-      <pointLight color="#f6f3ea" position={[1, 0, 3]} intensity={1.2} />
+      <pointLight color="#f6f3ea" position={position} intensity={1.2} />
       <Stars radius={300} depth={60} count={14000} factor={7} fade />
-      <mesh ref={cloudsRef}>
-        <sphereGeometry attach="geometry" args={[1.005, 32, 32]} />
+      <mesh ref={cloudsRef} position={[0, 0, 2]}>
+        <sphereGeometry attach="geometry" args={args} />
         <meshPhongMaterial
           map={cloudsMap}
           opacity={0.3}
@@ -39,7 +44,7 @@ export const Earth = (props: any) => {
           side={THREE.DoubleSide}
         />
       </mesh>
-      <mesh ref={earthRef}>
+      <mesh ref={earthRef} position={[0, 0, 2]}>
         <sphereGeometry attach="geometry" args={[1, 32, 32]} />
         <meshPhongMaterial specularMap={specularMap} />
         <meshStandardMaterial
@@ -48,13 +53,13 @@ export const Earth = (props: any) => {
           metalness={0.4}
           roughness={0.7}
         />
-        <OrbitControls
+        {/* <OrbitControls
           enableZoom
           enablePan
           zoomSpeed={0.6}
           panSpeed={0.5}
           rotateSpeed={0.4}
-        />
+        /> */}
       </mesh>
     </>
   );
