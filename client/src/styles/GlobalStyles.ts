@@ -4,6 +4,7 @@ import styled from 'styled-components';
 export default createGlobalStyle`
   :root {
     --black: #000000;    
+    --space: #01040c;
     
     --light-gray: #E1E1E6;
     --gray: #A8A8B3;
@@ -40,7 +41,7 @@ export default createGlobalStyle`
   }
   
   body { 
-    background: var(--white);
+    background: var(--space);
     color: var(--white);
   }
 
